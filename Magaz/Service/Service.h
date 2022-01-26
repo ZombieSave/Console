@@ -1,0 +1,2 @@
+ItemDTO GetItemsDTO();
+CategoriesDTO* GetCategoriesDTO();
