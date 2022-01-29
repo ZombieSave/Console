@@ -7,7 +7,7 @@ class Service
 	private:
 		Repository _repository;
 	public:
-		ItemDTO GetItemsDTO();
+		ItemDTO GetItemsDTO(string fileName);
 		std::vector<CategoriesDTO> GetCategoriesDTO();
 };
 

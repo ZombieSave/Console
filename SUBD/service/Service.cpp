@@ -1,28 +1,25 @@
 #include "Service.h"
 
 
-ItemDTO Service::GetItemsDTO()
+ItemDTO Service::GetItemsDTO(string fileName)
 {
 	ItemDTO result;
-	std::vector<ItemEntity> entities = _repository.GetItemEntities("C:\\DB\\item.csv");
+	std::vector<ItemEntity> entities = _repository.GetItemEntities(fileName);
 	result.Header.push_back(entities[0].Id);
 	result.Header.push_back(entities[0].Name);
 	result.Header.push_back(entities[0].Category);
 	result.Header.push_back(entities[0].Price);
 	result.Header.push_back(entities[0].InStock);
 	
-	int j = 1;
-	
-	for (int i = 0; i < entities.size()-1; i++)
+	for (int i = 1; i < entities.size(); i++)
 	{
 		ItemDataDTO item;
-		item.Id = stoi(entities[j].Id);
-		item.Name = entities[j].Name;
-		item.CategoryId = stoi(entities[j].Category);
-		item.Price = stof(entities[j].Price);
-		item.InStock = stoi(entities[j].InStock);
+		item.Id = stoi(entities[i].Id);
+		item.Name = entities[i].Name;
+		item.CategoryId = stoi(entities[i].Category);
+		item.Price = stof(entities[i].Price);
+		item.InStock = stoi(entities[i].InStock);
 		result.Data.push_back(item);
-		++j;
 	}
 	
 	return result;

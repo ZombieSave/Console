@@ -1,9 +1,9 @@
 #include "View.h"
 
-ItemView View::GetViewItems()
+ItemView View::GetViewItems(string fileName)
 {
 	ItemView result;
-	ItemDTO data = _service.GetItemsDTO();
+	ItemDTO data = _service.GetItemsDTO(fileName);
 	std::vector<CategoriesDTO> categories = _service.GetCategoriesDTO();
 	result.Items = MapToView(data.Data, categories);
 	result.Header = data.Header;
